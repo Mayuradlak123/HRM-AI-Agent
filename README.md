@@ -78,7 +78,11 @@ hrm-agent-2-0/
     └── hrm_agent.log          # Main log file
 ```
 
-### Workflow
+
+
+## System Flow Diagram
+
+```text
 ┌────────────────────────────┐
 │        Employee User        │
 └────────────┬───────────────┘
@@ -128,6 +132,31 @@ hrm-agent-2-0/
 │  - Displays AI’s response   │
 │  - Updates chat history     │
 └────────────────────────────┘
+
+
+## How It Works
+
+1. **Employee Login:**  
+   - The user logs into the system, which validates their credentials.
+
+2. **Access Chat Interface:**  
+   - The chat interface loads the user's conversation history.  
+   - The employee can ask HR-related questions directly in the chat.
+
+3. **Query Processing:**  
+   - The query is sent to the **FastAPI backend**.  
+   - The backend identifies the correct database collection for the request.  
+   - Relevant data is retrieved from **MongoDB**.
+
+4. **AI Response Generation:**  
+   - The user's query and retrieved data are sent to **Mistral AI**.  
+   - AI generates a personalized and contextual response.
+
+5. **Response Delivery:**  
+   - The response is sent back to the chat interface.  
+   - Conversation history is updated in the database for continuity.
+
+---
 
 ## 🚀 Quick Start
 
@@ -260,6 +289,7 @@ The server will start on `http://127.0.0.1:8000`
 | GET | `/login` | Login/signup page |
 | GET | `/chat` | Chat interface |
 | GET | `/health` | Health check |
+
 
 
 
