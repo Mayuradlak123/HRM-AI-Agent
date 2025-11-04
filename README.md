@@ -133,6 +133,7 @@ hrm-agent-2-0/
 │  - Updates chat history     │
 └────────────────────────────┘
 
+```
 
 ## How It Works
 
@@ -289,6 +290,7 @@ The server will start on `http://127.0.0.1:8000`
 | GET | `/login` | Login/signup page |
 | GET | `/chat` | Chat interface |
 | GET | `/health` | Health check |
+
 
 
 
