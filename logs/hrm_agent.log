@@ -1,0 +1,272 @@
+INFO: 2025-11-02 19:27:08 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:27:10 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:27:10 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:27:13 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:27:14 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:28:06 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:28:06 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:28:06 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:28:06 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:28:18 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:28:29 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:28:29 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:28:31 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:28:32 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:28:49 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:28:49 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:28:49 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:28:49 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:29:00 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:29:03 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:29:03 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:29:05 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:29:06 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:29:14 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:29:14 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:29:14 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:29:14 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:29:25 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:29:27 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:29:27 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:29:30 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:29:31 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:29:35 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+ERROR: 2025-11-02 19:29:36 - hrm_agent - Error sending OTP: name 'OTPService' is not defined
+INFO: 2025-11-02 19:30:18 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:30:18 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:30:18 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:30:18 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:33:04 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:33:06 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:33:06 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:33:08 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:33:10 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:33:14 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+ERROR: 2025-11-02 19:33:14 - hrm_agent - Error storing OTP for mayuradlak212@gmail.com: name 'settings' is not defined
+INFO: 2025-11-02 19:34:22 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:34:22 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:34:22 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:34:22 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:34:33 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:34:35 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:34:35 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:34:37 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:34:37 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:34:42 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+INFO: 2025-11-02 19:34:48 - hrm_agent - OTP verified successfully for: mayuradlak212@gmail.com
+INFO: 2025-11-02 19:39:43 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:39:43 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:39:43 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:39:43 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 19:53:48 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 19:53:48 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:53:52 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:53:54 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:54:56 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 19:54:56 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:54:59 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:55:00 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:55:01 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 19:55:04 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 19:55:04 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 19:55:06 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 19:55:06 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 19:55:15 - hrm_agent - Payload 
+INFO: 2025-11-02 19:55:16 - hrm_agent - User 
+INFO: 2025-11-02 19:55:16 - hrm_agent - Payload 
+INFO: 2025-11-02 19:55:17 - hrm_agent - User 
+INFO: 2025-11-02 19:55:17 - hrm_agent - Payload 
+INFO: 2025-11-02 19:55:17 - hrm_agent - User 
+INFO: 2025-11-02 19:55:58 - hrm_agent - Payload 
+INFO: 2025-11-02 19:55:58 - hrm_agent - User 
+INFO: 2025-11-02 19:56:10 - hrm_agent - Successfully inserted vector ID 'chat:2116d315-3bbc-4534-8f8a-051192e384fb:30cf7767-05a4-4f4d-92c4-f55d730989ad:q' with metadata: {'source': 'chat', 'session_id': '2116d315-3bbc-4534-8f8a-051192e384fb', 'message_id': '30cf7767-05a4-4f4d-92c4-f55d730989ad', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:26:08.583179', 'response_type': 'mistral_contextual', 'type': 'chat_query', 'text': 'Tell me last month salary'}
+INFO: 2025-11-02 19:56:10 - hrm_agent - Successfully inserted vector ID 'chat:2116d315-3bbc-4534-8f8a-051192e384fb:30cf7767-05a4-4f4d-92c4-f55d730989ad:a' with metadata: {'source': 'chat', 'session_id': '2116d315-3bbc-4534-8f8a-051192e384fb', 'message_id': '30cf7767-05a4-4f4d-92c4-f55d730989ad', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:26:08.583179', 'response_type': 'mistral_contextual', 'type': 'chat_answer', 'text': 'Hi Mayur,\n\nHere’s a summary of your **July 2025 salary** (last month) based on the available records:\n\n- **Gross Pay**: ₹75,000\n- **Net Pay (in-hand)**: ₹68,000\n- **Pay Date**: **31st July 2025** (credited to your account on this date).\n- **Breakdown**:\n  - **Basic**: ₹40,000\n  - **HRA (House Rent Allowance)**: ₹20,000\n  - **Allowances**: ₹15,000\n  - **Deductions**:\n    - **PF (Provident Fund)**: ₹5,000\n    - **Tax**: ₹2,000\n\n### Additional Notes:\n- Your **annual base salary** is ₹9,00,000 (as per your employment details), so this aligns with your monthly gross (~₹75,000).\n- The **currency** is **INR (Indian Rupees)**.'}
+INFO: 2025-11-02 19:59:30 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 19:59:30 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 19:59:30 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 19:59:31 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:00:32 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:00:32 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:00:36 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:00:37 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:00:37 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:00:41 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:00:41 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:00:43 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:00:43 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:01:44 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:01:44 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:01:49 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:01:52 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:01:53 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:01:57 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:01:57 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:01:59 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:01:59 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:05:28 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 20:05:28 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 20:05:28 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 20:05:28 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:06:44 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:06:44 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:06:48 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:06:49 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:06:50 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:06:56 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:06:56 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:06:58 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:06:58 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:08:02 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:08:02 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:08:05 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:08:07 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:11:32 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:11:32 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:11:38 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:11:40 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:11:41 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:11:44 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:11:44 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:11:46 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:11:46 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:11:46 - hrm_agent - Payload 
+INFO: 2025-11-02 20:11:46 - hrm_agent - User 
+INFO: 2025-11-02 20:11:46 - hrm_agent - Payload 
+INFO: 2025-11-02 20:11:46 - hrm_agent - User 
+INFO: 2025-11-02 20:11:48 - hrm_agent - Payload 
+INFO: 2025-11-02 20:11:48 - hrm_agent - User 
+INFO: 2025-11-02 20:17:08 - hrm_agent - Payload 
+INFO: 2025-11-02 20:17:08 - hrm_agent - User 
+INFO: 2025-11-02 20:17:37 - hrm_agent - Payload 
+INFO: 2025-11-02 20:17:37 - hrm_agent - User 
+INFO: 2025-11-02 20:17:47 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:596dc31d-250d-4685-98a0-f1825c1ad4f4:q' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '596dc31d-250d-4685-98a0-f1825c1ad4f4', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:47:44.824853', 'response_type': 'mistral_contextual', 'type': 'chat_query', 'text': 'Tell me about my company'}
+INFO: 2025-11-02 20:17:48 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:596dc31d-250d-4685-98a0-f1825c1ad4f4:a' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '596dc31d-250d-4685-98a0-f1825c1ad4f4', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:47:44.824853', 'response_type': 'mistral_contextual', 'type': 'chat_answer', 'text': 'Hi Mayur,\n\nYou work at TechCorp Solutions Pvt Ltd, a software company that builds HR automation tools and AI assistants for modern workplaces. Here are some key details about the company:\n\n- Founded in 2020 by Aarav Sharma and Meera Nair, TechCorp is headquartered in Bengaluru with an office in Pune (where you’re based).\n- The company has around 120 employees and focuses on making work simpler through automation, with a mission to empower teams with intelligent HR solutions.\n- Core values include customer obsession, bias for action, ownership, and a culture of learning.\n- The work environment is open, collaborative, and remote-friendly, with hybrid work as the default (up to 3 remote days per week) and flexible hours.\n- Benefits include health insurance (you’re enrolled in ICICI Lombard’s policy with ₹5L coverage), flexible paid time off (you currently have 7.5 casual leave days), and a learning stipend.\n\nTechCorp’s CEO is Aarav Sharma, and the company operates from Monday to Friday, 9 AM to 6 PM IST. You can find more details on their website: [techcorp.example](https://techcorp.example).'}
+INFO: 2025-11-02 20:17:48 - hrm_agent - Payload 
+INFO: 2025-11-02 20:17:48 - hrm_agent - User 
+INFO: 2025-11-02 20:20:59 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 20:20:59 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 20:20:59 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 20:20:59 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:22:06 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:22:06 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:22:10 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:22:11 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:22:13 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:22:17 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:22:17 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:22:19 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:22:19 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:23:19 - hrm_agent - Payload 
+INFO: 2025-11-02 20:23:19 - hrm_agent - User 
+INFO: 2025-11-02 20:23:26 - hrm_agent - Stored message 384077ef-0af4-4811-a21b-9a1e9cdea390 in session 9c6bbdca-90f4-4dae-99c2-44b7711aeb40
+INFO: 2025-11-02 20:23:29 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:384077ef-0af4-4811-a21b-9a1e9cdea390:q' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '384077ef-0af4-4811-a21b-9a1e9cdea390', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:53:26.952924', 'response_type': 'mistral_contextual', 'type': 'chat_query', 'text': 'What will be my working hour'}
+INFO: 2025-11-02 20:23:29 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:384077ef-0af4-4811-a21b-9a1e9cdea390:a' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '384077ef-0af4-4811-a21b-9a1e9cdea390', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:53:26.952924', 'response_type': 'mistral_contextual', 'type': 'chat_answer', 'text': "Hi Mayur,\n\nYour working hours at TechCorp Solutions Pvt Ltd are from 9:00 AM to 6:00 PM, Monday to Friday. Since you are based in Pune, this follows the company's standard working hours in the Asia/Kolkata time zone."}
+INFO: 2025-11-02 20:23:29 - hrm_agent - Successfully upserted embeddings to Pinecone for message 384077ef-0af4-4811-a21b-9a1e9cdea390
+INFO: 2025-11-02 20:26:49 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 20:26:49 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 20:26:49 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 20:26:49 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:27:50 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:27:50 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:27:53 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:27:55 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:27:55 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:27:57 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:27:57 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:27:59 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:27:59 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:29:13 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:29:13 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:29:15 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:29:16 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:29:16 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:29:19 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:29:19 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:29:21 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:29:21 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:29:47 - hrm_agent - Payload 
+INFO: 2025-11-02 20:29:47 - hrm_agent - User 
+INFO: 2025-11-02 20:29:47 - hrm_agent - Session title updated  
+INFO: 2025-11-02 20:29:52 - hrm_agent - Stored message 1c1f1964-41f1-4399-b20d-1c3524d443bb in session 9c6bbdca-90f4-4dae-99c2-44b7711aeb40
+INFO: 2025-11-02 20:29:55 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:1c1f1964-41f1-4399-b20d-1c3524d443bb:q' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '1c1f1964-41f1-4399-b20d-1c3524d443bb', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:59:53.468080', 'response_type': 'mistral_contextual', 'type': 'chat_query', 'text': 'Name of Company'}
+INFO: 2025-11-02 20:29:56 - hrm_agent - Successfully inserted vector ID 'chat:9c6bbdca-90f4-4dae-99c2-44b7711aeb40:1c1f1964-41f1-4399-b20d-1c3524d443bb:a' with metadata: {'source': 'chat', 'session_id': '9c6bbdca-90f4-4dae-99c2-44b7711aeb40', 'message_id': '1c1f1964-41f1-4399-b20d-1c3524d443bb', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T14:59:53.468080', 'response_type': 'mistral_contextual', 'type': 'chat_answer', 'text': 'The name of the company is TechCorp Solutions Pvt Ltd.'}
+INFO: 2025-11-02 20:29:56 - hrm_agent - Successfully upserted embeddings to Pinecone for message 1c1f1964-41f1-4399-b20d-1c3524d443bb
+INFO: 2025-11-02 20:30:46 - hrm_agent - Payload 
+INFO: 2025-11-02 20:30:46 - hrm_agent - User 
+INFO: 2025-11-02 20:30:46 - hrm_agent - Payload 
+INFO: 2025-11-02 20:30:47 - hrm_agent - User 
+INFO: 2025-11-02 20:30:47 - hrm_agent - Payload 
+INFO: 2025-11-02 20:30:48 - hrm_agent - User 
+INFO: 2025-11-02 20:31:08 - hrm_agent - Payload 
+INFO: 2025-11-02 20:31:08 - hrm_agent - User 
+INFO: 2025-11-02 20:31:09 - hrm_agent - Created new chat session 0bc25843-bb81-48d2-a3c1-45ef916d4f51 for user 79dbcec4-578a-4014-9d89-e751eaeeafaa
+INFO: 2025-11-02 20:31:09 - hrm_agent - Payload 
+INFO: 2025-11-02 20:31:09 - hrm_agent - User 
+INFO: 2025-11-02 20:31:28 - hrm_agent - Payload 
+INFO: 2025-11-02 20:31:28 - hrm_agent - User 
+INFO: 2025-11-02 20:31:28 - hrm_agent - Session title updated  
+INFO: 2025-11-02 20:31:28 - hrm_agent - Updated session 0bc25843-bb81-48d2-a3c1-45ef916d4f51 title: What will be working days?
+INFO: 2025-11-02 20:31:32 - hrm_agent - Stored message cc133722-b27c-4c8d-bc9a-c8b9210ad9b1 in session 0bc25843-bb81-48d2-a3c1-45ef916d4f51
+INFO: 2025-11-02 20:31:34 - hrm_agent - Successfully inserted vector ID 'chat:0bc25843-bb81-48d2-a3c1-45ef916d4f51:cc133722-b27c-4c8d-bc9a-c8b9210ad9b1:q' with metadata: {'source': 'chat', 'session_id': '0bc25843-bb81-48d2-a3c1-45ef916d4f51', 'message_id': 'cc133722-b27c-4c8d-bc9a-c8b9210ad9b1', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T15:01:32.759875', 'response_type': 'mistral_contextual', 'type': 'chat_query', 'text': 'What will be working days?'}
+INFO: 2025-11-02 20:31:35 - hrm_agent - Successfully inserted vector ID 'chat:0bc25843-bb81-48d2-a3c1-45ef916d4f51:cc133722-b27c-4c8d-bc9a-c8b9210ad9b1:a' with metadata: {'source': 'chat', 'session_id': '0bc25843-bb81-48d2-a3c1-45ef916d4f51', 'message_id': 'cc133722-b27c-4c8d-bc9a-c8b9210ad9b1', 'user_id': '79dbcec4-578a-4014-9d89-e751eaeeafaa', 'timestamp': '2025-11-02T15:01:32.759875', 'response_type': 'mistral_contextual', 'type': 'chat_answer', 'text': 'Hi Mayur,\n\nAt TechCorp Solutions Pvt Ltd, the working days are:\nMonday, Tuesday, Wednesday, Thursday, and Friday.'}
+INFO: 2025-11-02 20:31:35 - hrm_agent - Successfully upserted embeddings to Pinecone for message cc133722-b27c-4c8d-bc9a-c8b9210ad9b1
+INFO: 2025-11-02 20:31:50 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 20:31:50 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 20:31:50 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 20:31:51 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:32:57 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:32:57 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:33:01 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:33:02 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:33:03 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:33:07 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:33:07 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:33:09 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:33:09 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:34:37 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:34:38 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:34:40 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:34:41 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:34:41 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:34:46 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:34:46 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:34:48 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:34:48 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:34:49 - hrm_agent - Payload 
+INFO: 2025-11-02 20:34:50 - hrm_agent - User 
+INFO: 2025-11-02 20:34:50 - hrm_agent - Payload 
+INFO: 2025-11-02 20:34:50 - hrm_agent - User 
+INFO: 2025-11-02 20:34:50 - hrm_agent - Payload 
+INFO: 2025-11-02 20:34:50 - hrm_agent - User 
+INFO: 2025-11-02 20:35:11 - hrm_agent - Payload 
+INFO: 2025-11-02 20:35:12 - hrm_agent - User 
+INFO: 2025-11-02 20:35:12 - hrm_agent - Payload 
+INFO: 2025-11-02 20:35:12 - hrm_agent - User 
+INFO: 2025-11-02 20:41:47 - hrm_agent - Closing Pinecone connection...
+INFO: 2025-11-02 20:41:47 - hrm_agent - Pinecone connection closed successfully
+INFO: 2025-11-02 20:41:47 - hrm_agent - Closing MongoDB connection...
+INFO: 2025-11-02 20:41:47 - hrm_agent - MongoDB connection closed successfully
+INFO: 2025-11-02 20:43:13 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:43:13 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:43:17 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:43:19 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:43:21 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:43:28 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:43:28 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:43:30 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:43:30 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:45:35 - hrm_agent - Initialized local model: microsoft/DialoGPT-medium on cpu
+INFO: 2025-11-02 20:45:35 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:45:38 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:45:40 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 20:45:41 - hrm_agent - Attempting to connect to MongoDB...
+INFO: 2025-11-02 20:45:45 - hrm_agent - Successfully connected to MongoDB
+INFO: 2025-11-02 20:45:45 - hrm_agent - Attempting to connect to Pinecone...
+INFO: 2025-11-02 20:45:47 - hrm_agent - Index 'hrm-agent' already exists
+INFO: 2025-11-02 20:45:47 - hrm_agent - Successfully connected to Pinecone index 'hrm-agent'
+INFO: 2025-11-02 23:55:05 - hrm_agent - Payload 
+INFO: 2025-11-02 23:55:06 - hrm_agent - User 
+INFO: 2025-11-02 23:55:06 - hrm_agent - Payload 
+INFO: 2025-11-02 23:55:06 - hrm_agent - User 
+INFO: 2025-11-02 23:55:06 - hrm_agent - Payload 
+INFO: 2025-11-02 23:55:06 - hrm_agent - User 

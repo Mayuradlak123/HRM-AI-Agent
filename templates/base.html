@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ title or "HRM Agent" }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      
+      
+      // Enhanced token management with better auth state detection
+      function getAccessToken() {
+        return localStorage.getItem("access_token");
+      }
+      
+      function isLoggedIn() {
+        const token = getAccessToken();
+        const hasAuthCookie = document.cookie.includes('access_token');
+        return !!(token || hasAuthCookie);
+      }
+      
+      async function apiRequest(url, options = {}) {
+        const headers = options.headers || {};
+        const token = getAccessToken();
+        if (token) headers["Authorization"] = "Bearer " + token;
+        return fetch(url, { credentials: "same-origin", ...options, headers });
+      }
+      
+      async function handleLogout() {
+        const btn = document.getElementById("logoutBtn");
+        if (btn) { 
+          btn.disabled = true; 
+          btn.innerHTML = `
+            <svg class="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Logging out...
+          `;
+        }
+        try {
+          await apiRequest("/auth/logout", { method: "POST" });
+          localStorage.removeItem("access_token");
+          localStorage.removeItem("refresh_token");
+          window.location.href = "/login";
+        } catch (error) {
+          console.error('Logout failed:', error);
+          // Force redirect anyway
+          window.location.href = "/login";
+        }
+      }
+      
+      // Update nav state on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateNavState();
+      });
+      
+      function updateNavState() {
+        const isAuth = isLoggedIn();
+        const authNav = document.getElementById('authNav');
+        const guestNav = document.getElementById('guestNav');
+        
+        if (authNav && guestNav) {
+          if (isAuth) {
+            authNav.classList.remove('hidden');
+            guestNav.classList.add('hidden');
+          } else {
+            authNav.classList.add('hidden');
+            guestNav.classList.remove('hidden');
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="min-h-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-900">
+    <!-- Enhanced Top Nav with glassmorphism -->
+    <header class="sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-gray-200/50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <!-- Logo with enhanced styling -->
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white grid place-items-center font-bold text-lg shadow-lg group-hover:shadow-emerald-200 transition-all duration-300 group-hover:scale-105">
+              HR
+            </div>
+            <span class="font-bold text-xl bg-gradient-to-r from-emerald-700 to-teal-600 bg-clip-text text-transparent">HRM Agent</span>
+          </a>
+          
+          <!-- Navigation -->
+          <nav class="flex items-center gap-4">
+            <!-- Authenticated Navigation -->
+            <div id="authNav" class="flex items-center gap-4 {{ 'hidden' if not current_user }}">
+              <a href="/chat" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium hover:bg-white/60 transition-colors duration-200">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                </svg>
+                Chat
+              </a>
+              <div class="hidden sm:flex items-center gap-3">
+                <div class="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 grid place-items-center text-white text-sm font-medium">
+                  {{ (current_user.first_name[0] if current_user and current_user.first_name else "U") | upper }}
+                </div>
+                <span class="text-sm text-gray-700">
+                  Hi, <span class="font-semibold">{{ current_user.first_name or "User" if current_user else "User" }}</span>
+                </span>
+              </div>
+              <button id="logoutBtn"
+                      onclick="handleLogout()"
+                      class="inline-flex items-center px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-sm font-medium hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 shadow-lg hover:shadow-emerald-200 transition-all duration-200">
+                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                Logout
+              </button>
+            </div>
+            
+            <!-- Guest Navigation -->
+            <div id="guestNav" class="flex items-center gap-3 {{ '' if not current_user else 'hidden' }}">
+              <a href="/login" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium bg-gray-900 text-white hover:bg-black transition-colors duration-200 shadow-lg hover:shadow-gray-300">
+                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+                </svg>
+                Login
+              </a>
+              <!-- <a href="/register" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-medium border border-gray-300 hover:bg-white/60 transition-colors duration-200 backdrop-blur-sm">
+                <svg class="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                </svg>
+                Register
+              </a> -->
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Enhanced Page Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Enhanced Toast with better styling -->
+    <div id="toast" class="fixed bottom-6 right-6 hidden max-w-sm rounded-2xl bg-gray-900/90 backdrop-blur-sm text-white px-6 py-4 text-sm shadow-2xl border border-gray-700/50 animate-slide-in">
+      <div class="flex items-center gap-3">
+        <div class="h-2 w-2 rounded-full bg-emerald-400 animate-bounce-subtle"></div>
+        <span id="toastMessage"></span>
+      </div>
+    </div>
+    
+    <script>
+      function toast(msg) {
+        const t = document.getElementById('toast');
+        const msgEl = document.getElementById('toastMessage');
+        msgEl.textContent = msg;
+        t.classList.remove('hidden');
+        setTimeout(() => t.classList.add('hidden'), 3500);
+      }
+    </script>
+  </body>
+</html>

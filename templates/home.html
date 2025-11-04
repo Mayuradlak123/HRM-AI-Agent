@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="space-y-8">
+  <!-- Hero Section -->
+  <section class="text-center py-12">
+    <div class="animate-fade-in">
+      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-emerald-100/80 border border-emerald-200/50 mb-6">
+        <div class="h-2 w-2 bg-emerald-500 rounded-full animate-pulse"></div>
+        <span class="text-emerald-800 text-sm font-medium">AI-Powered HR Assistant</span>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        <span class="bg-gradient-to-r from-gray-900 via-emerald-800 to-teal-700 bg-clip-text text-transparent">
+          Welcome{% if current_user %}, {{ current_user.first_name }}{% endif %}
+        </span>
+        <span class="block text-5xl md:text-7xl">👋</span>
+      </h1>
+      
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Your centralized hub for HR queries, policies, and personal records. 
+        Get instant answers powered by intelligent AI assistance.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/chat" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-lg font-semibold hover:from-emerald-700 hover:to-teal-700 shadow-2xl hover:shadow-emerald-200 transition-all duration-300 hover:scale-105">
+          <svg class="h-6 w-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+          Start Chatting
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 5l7 7-7 7v-4H4v-6h9V5z"/>
+          </svg>
+        </a>
+        
+        {% if not current_user %}
+        <a href="/login" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-lg font-semibold hover:bg-white/80 backdrop-blur-sm transition-all duration-200">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+          </svg>
+          Get Started
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Grid -->
+  <section class="grid gap-8 lg:grid-cols-3">
+    <!-- Profile Card -->
+    <div class="lg:col-span-2">
+      <div class="rounded-3xl border border-gray-200/60 bg-white/80 backdrop-blur-sm p-8 shadow-xl shadow-gray-200/50 animate-fade-in">
+        <div class="flex items-start justify-between mb-8">
+          <div class="flex items-start gap-6">
+            <!-- Profile Avatar -->
+            <div class="h-20 w-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-600 grid place-items-center text-white text-2xl font-bold shadow-lg">
+              {{ (current_user.first_name[0] if current_user and current_user.first_name else "U") | upper }}{{ (current_user.last_name[0] if current_user and current_user.last_name else "S") | upper }}
+            </div>
+            
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                {% if current_user %}
+                  {{ current_user.first_name }} {{ current_user.last_name }}
+                {% else %}
+                  Guest User
+                {% endif %}
+              </h2>
+              <div class="flex items-center gap-3 mb-3">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-sm font-medium">
+                  <div class="h-2 w-2 bg-emerald-500 rounded-full"></div>
+                  {{ current_user.role if current_user else "Guest" }}
+                </div>
+              </div>
+              <p class="text-gray-600">Ready to assist you with all your HR needs</p>
+            </div>
+          </div>
+          
+          <div class="text-right">
+            <div class="text-sm text-gray-500 mb-1">Status</div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-800 text-sm font-medium">
+              <div class="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+              Active
+            </div>
+          </div>
+        </div>
+
+        <!-- Info Cards -->
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="group rounded-2xl border-2 border-gray-200 hover:border-emerald-300 p-6 transition-all duration-200 hover:shadow-lg hover:bg-emerald-50/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="h-10 w-10 rounded-xl bg-emerald-100 group-hover:bg-emerald-200 grid place-items-center transition-colors">
+                <svg class="h-5 w-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                </svg>
+              </div>
+              <div class="text-xs uppercase text-gray-500 font-semibold">Department</div>
+            </div>
+            <div class="text-lg font-bold text-gray-900">{{ current_user.department_id if current_user else "General" }}</div>
+          </div>
+
+          <div class="group rounded-2xl border-2 border-gray-200 hover:border-blue-300 p-6 transition-all duration-200 hover:shadow-lg hover:bg-blue-50/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="h-10 w-10 rounded-xl bg-blue-100 group-hover:bg-blue-200 grid place-items-center transition-colors">
+                <svg class="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="text-xs uppercase text-gray-500 font-semibold">Email</div>
+            </div>
+            <div class="text-lg font-bold text-gray-900 truncate">{{ current_user.email if current_user else "guest@company.com" }}</div>
+          </div>
+
+          <div class="group rounded-2xl border-2 border-gray-200 hover:border-purple-300 p-6 transition-all duration-200 hover:shadow-lg hover:bg-purple-50/30">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="h-10 w-10 rounded-xl bg-purple-100 group-hover:bg-purple-200 grid place-items-center transition-colors">
+                <svg class="h-5 w-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div class="text-xs uppercase text-gray-500 font-semibold">Last Active</div>
+            </div>
+            <div class="text-lg font-bold text-gray-900">Just now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="space-y-6">
+      <!-- Quick Actions -->
+      <div class="rounded-3xl border border-gray-200/60 bg-white/80 backdrop-blur-sm p-6 shadow-xl shadow-gray-200/50 animate-slide-in">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 grid place-items-center">
+            <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900">Quick Actions</h3>
+        </div>
+        
+        <div class="grid gap-3">
+          <a href="/chat" class="group w-full text-center px-4 py-3 rounded-xl border-2 border-gray-300 hover:border-emerald-400 hover:bg-emerald-50/50 font-medium transition-all duration-200 hover:shadow-md">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="h-5 w-5 text-gray-600 group-hover:text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              Ask HR Assistant
+            </div>
+          </a>
+          
+          <a href="/neural-network" class="group w-full text-center px-4 py-3 rounded-xl border-2 border-gray-300 hover:border-indigo-400 hover:bg-indigo-50/50 font-medium transition-all duration-200 hover:shadow-md">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="h-5 w-5 text-gray-600 group-hover:text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              🧠 Neural Networks
+            </div>
+          </a>
+          
+          <a href="/deepfake-history" class="group w-full text-center px-4 py-3 rounded-xl border-2 border-gray-300 hover:border-purple-400 hover:bg-purple-50/50 font-medium transition-all duration-200 hover:shadow-md">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="h-5 w-5 text-gray-600 group-hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg>
+              🔍 Analysis History
+            </div>
+          </a>
+          
+          {% if not current_user %}
+          <a href="/login" class="group w-full text-center px-4 py-3 rounded-xl border-2 border-gray-300 hover:border-blue-400 hover:bg-blue-50/50 font-medium transition-all duration-200 hover:shadow-md">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="h-5 w-5 text-gray-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+              </svg>
+              Login to Account
+            </div>
+          </a>
+          
+          <!-- <a href="/register" class="group w-full text-center px-4 py-3 rounded-xl border-2 border-gray-300 hover:border-purple-400 hover:bg-purple-50/50 font-medium transition-all duration-200 hover:shadow-md">
+            <div class="flex items-center justify-center gap-2">
+              <svg class="h-5 w-5 text-gray-600 group-hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+              </svg>
+              Create Account
+            </div>
+          </a> -->
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="rounded-3xl border border-gray-200/60 bg-white/80 backdrop-blur-sm p-6 shadow-xl shadow-gray-200/50">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 grid place-items-center">
+            <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900">Key Features</h3>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="h-6 w-6 rounded-full bg-emerald-100 grid place-items-center shrink-0 mt-1">
+              <svg class="h-3 w-3 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-gray-900 text-sm">Instant Leave Balance</p>
+              <p class="text-gray-600 text-xs">Check your remaining vacation and sick days</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3">
+            <div class="h-6 w-6 rounded-full bg-blue-100 grid place-items-center shrink-0 mt-1">
+              <svg class="h-3 w-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-gray-900 text-sm">Payslip Access</p>
+              <p class="text-gray-600 text-xs">Download and view your salary statements</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3">
+            <div class="h-6 w-6 rounded-full bg-purple-100 grid place-items-center shrink-0 mt-1">
+              <svg class="h-3 w-3 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-gray-900 text-sm">Policy Guidance</p>
+              <p class="text-gray-600 text-xs">Get answers about company policies and benefits</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start gap-3">
+            <div class="h-6 w-6 rounded-full bg-orange-100 grid place-items-center shrink-0 mt-1">
+              <svg class="h-3 w-3 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-medium text-gray-900 text-sm">24/7 Availability</p>
+              <p class="text-gray-600 text-xs">Access your HR information anytime, anywhere</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+</div>
+{% endblock %}

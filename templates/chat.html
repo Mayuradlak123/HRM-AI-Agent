@@ -1,0 +1,536 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  body, html {
+    overflow: hidden !important;
+    height: 100vh;
+  }
+</style>
+
+<div class="fixed inset-0 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden min-h-screen ">
+  <div class="h-[calc(100%-80px)] flex gap-4 p-4 mt-20">
+    <!-- Session Sidebar -->
+    <aside class="w-72 transition-all duration-300 flex-shrink-0" id="sessionSidebar">
+      <div class="h-full flex flex-col bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-gray-900 to-gray-800 p-4 flex items-center justify-between flex-shrink-0">
+          <div class="flex items-center gap-2" id="sidebarContent">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+            <div>
+              <h3 class="font-bold text-white text-sm">Chat History</h3>
+              <p class="text-gray-300 text-xs">Your conversations</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <!-- New Chat Button -->
+            <button id="newChatBtn" class="p-2 hover:bg-gray-700 rounded-lg transition-all" title="New chat">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+              </svg>
+            </button>
+            <!-- Toggle Sidebar Button -->
+            <button id="toggleSidebar" class="p-2 hover:bg-gray-700 rounded-lg transition-all" title="Toggle sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        <div id="sessionList" class="p-3 space-y-2 flex-1 overflow-y-auto">
+          <div class="text-center text-sm text-gray-400 py-8">
+            <div class="inline-block animate-pulse">Loading sessions...</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Conversation Area -->
+    <section class="flex-1 transition-all duration-300 min-w-0">
+      <div class="h-full flex flex-col bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 p-5 border-b border-gray-700 flex-shrink-0">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <div>
+                <h2 class="text-xl font-bold text-white">HR Assistant</h2>
+                <p class="text-gray-300 text-xs">Ask me anything about HR policies, payslips, leaves & more</p>
+              </div>
+            </div>
+            <button id="clearSessionBtn" class="hidden px-4 py-2 bg-red-500/10 text-red-400 rounded-xl text-sm font-medium hover:bg-red-500/20 transition-all">
+              Clear Chat
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chatBox" class="flex-1 p-6 overflow-y-auto space-y-4 bg-gradient-to-b from-gray-50 to-white">
+          <div class="flex flex-col items-center justify-center h-full text-center space-y-4 opacity-50">
+            <div class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-gray-600 font-medium">Start a conversation</p>
+              <p class="text-sm text-gray-400 mt-1">Type your question below or use quick prompts</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-5 bg-white border-t border-gray-100 flex-shrink-0">
+          <form id="askForm" class="flex items-end gap-3">
+            <div class="flex-1">
+              <input id="q" placeholder="Type your question here... (e.g., What's my leave balance?)"    
+                        class="w-full rounded-2xl border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 p-2 resize-none transition-all"/>
+            </div>
+            <button id="askBtn" type="submit"
+                    class="px-3 py-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-semibold hover:from-emerald-700 hover:to-emerald-600 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 flex items-center gap-2 flex-shrink-0">
+              <span>Send</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Actions Sidebar -->
+    <aside class="w-80 flex-shrink-0 space-y-4 overflow-y-auto">
+      <!-- Quick Prompts -->
+      <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-emerald-600 to-emerald-500 p-4">
+          <h3 class="font-bold text-white flex items-center gap-2 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Quick Prompts
+          </h3>
+        </div>
+        <div class="p-3 space-y-2">
+          <button class="w-full px-3 py-3 rounded-xl border-2 border-gray-200 text-left hover:border-emerald-500 hover:bg-emerald-50 transition-all group" onclick="fillAndAsk('What my leave balance?')">
+            <p class="font-medium text-gray-900 group-hover:text-emerald-600 text-sm">💼 Leave Balance</p>
+            <p class="text-xs text-gray-500 mt-1">Check remaining leaves</p>
+          </button>
+          <button class="w-full px-3 py-3 rounded-xl border-2 border-gray-200 text-left hover:border-emerald-500 hover:bg-emerald-50 transition-all group" onclick="fillAndAsk('Show my latest payslip')">
+            <p class="font-medium text-gray-900 group-hover:text-emerald-600 text-sm">💰 Latest Payslip</p>
+            <p class="text-xs text-gray-500 mt-1">View salary details</p>
+          </button>
+          <button class="w-full px-3 py-3 rounded-xl border-2 border-gray-200 text-left hover:border-emerald-500 hover:bg-emerald-50 transition-all group" onclick="fillAndAsk('Who is my manager?')">
+            <p class="font-medium text-gray-900 group-hover:text-emerald-600 text-sm">👤 My Manager</p>
+            <p class="text-xs text-gray-500 mt-1">View reporting structure</p>
+          </button>
+          <button class="w-full px-3 py-3 rounded-xl border-2 border-gray-200 text-left hover:border-emerald-500 hover:bg-emerald-50 transition-all group" onclick="fillAndAsk('What benefits am I enrolled in?')">
+            <p class="font-medium text-gray-900 group-hover:text-emerald-600 text-sm">🎁 My Benefits</p>
+            <p class="text-xs text-gray-500 mt-1">Check enrolled benefits</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-lg p-5 text-white">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold mb-2 text-sm">How it works</h3>
+            <p class="text-xs text-gray-300 leading-relaxed">
+              Personal answers are fetched from your employee database. Policy and FAQ responses use our AI-powered knowledge base.
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+const chatBox = document.getElementById('chatBox');
+const askForm = document.getElementById('askForm');
+const qEl = document.getElementById('q');
+const sessionList = document.getElementById('sessionList');
+const clearSessionBtn = document.getElementById('clearSessionBtn');
+const toggleSidebarBtn = document.getElementById('toggleSidebar');
+const newChatBtn = document.getElementById('newChatBtn');
+const sessionSidebar = document.getElementById('sessionSidebar');
+const sidebarContent = document.getElementById('sidebarContent');
+
+let currentSessionId = null;
+let isSidebarCollapsed = false;
+
+// Create new chat session
+newChatBtn.addEventListener('click', async () => {
+  try {
+    const r = await apiRequest('/api/chat/new-session', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ title: 'New Chat' })
+    });
+    const j = await r.json();
+    
+    if (r.ok && j.session_id) {
+      currentSessionId = j.session_id;
+      
+      // Clear chat box
+      chatBox.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full text-center space-y-4 opacity-50">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-gray-600 font-medium">Start a conversation</p>
+            <p class="text-sm text-gray-400 mt-1">Type your question below or use quick prompts</p>
+          </div>
+        </div>
+      `;
+      
+      clearSessionBtn.classList.remove('hidden');
+      loadSessions();
+      toast('New chat created!');
+    } else {
+      toast('Failed to create new chat');
+    }
+  } catch (err) {
+    console.error('Error creating session:', err);
+    toast('Error creating new chat');
+  }
+});
+
+// Toggle sidebar
+toggleSidebarBtn.addEventListener('click', () => {
+  isSidebarCollapsed = !isSidebarCollapsed;
+  
+  if (isSidebarCollapsed) {
+    sessionSidebar.style.width = '60px';
+    sidebarContent.style.display = 'none';
+    sessionList.style.display = 'none';
+    newChatBtn.style.display = 'none';
+    toggleSidebarBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+      </svg>
+    `;
+  } else {
+    sessionSidebar.style.width = '288px';
+    sidebarContent.style.display = 'flex';
+    sessionList.style.display = 'block';
+    newChatBtn.style.display = 'block';
+    toggleSidebarBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+      </svg>
+    `;
+  }
+});
+
+// Load all sessions on page load
+async function loadSessions() {
+  try {
+    const r = await apiRequest('/api/chat/history', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'}
+    });
+    const j = await r.json();
+    
+    console.log('Sessions loaded:', j);
+    
+    if (r.ok && j.data && j.data.length > 0) {
+      renderSessions(j.data);
+      
+      if (!currentSessionId) {
+        loadSessionMessages(j.data[0].session_id);
+      }
+    } else {
+      sessionList.innerHTML = `
+        <div class="text-center py-12 px-4">
+          <div class="w-12 h-12 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+          <p class="text-xs text-gray-400 font-medium">No conversations yet</p>
+        </div>
+      `;
+    }
+  } catch (err) {
+    console.error('Error loading sessions:', err);
+    sessionList.innerHTML = `
+      <div class="text-center text-xs text-red-400 py-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Failed to load
+      </div>
+    `;
+  }
+}
+
+function renderSessions(sessions) {
+  sessionList.innerHTML = '';
+  
+  sessions.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  
+  sessions.forEach(session => {
+    const div = document.createElement('div');
+    const isActive = currentSessionId === session.session_id;
+    div.className = `group relative flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all ${
+      isActive 
+        ? 'bg-gradient-to-r from-emerald-50 to-emerald-100 border-2 border-emerald-500 shadow-sm' 
+        : 'hover:bg-gray-50 border-2 border-transparent'
+    }`;
+    
+    // Use title if available, otherwise use session_id
+    const displayTitle = session.title && session.title !== 'New Chat'
+      ? session.title.substring(0, 30) + (session.title.length > 30 ? '...' : '')
+      : session.session_id.toString().toUpperCase().substring(0, 8) + '...';
+    
+    div.innerHTML = `
+      <div class="flex-1 min-w-0" onclick="loadSessionMessages('${session.session_id}')">
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-gray-300'}"></div>
+          <p class="text-xs font-semibold text-gray-900 truncate">${displayTitle}</p>
+        </div>
+        <p class="text-xs text-gray-500 ml-3.5 mt-0.5">${formatDate(session.created_at)}</p>
+      </div>
+      <button class="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg hover:bg-red-100 text-red-500 transition-all" 
+              onclick="deleteSession(event, '${session.session_id}')" 
+              title="Delete session">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+      </button>
+    `;
+    
+    sessionList.appendChild(div);
+  });
+}
+
+async function loadSessionMessages(sessionId) {
+  currentSessionId = sessionId;
+  chatBox.innerHTML = `
+    <div class="flex items-center justify-center h-full">
+      <div class="text-center">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-gray-200 border-t-emerald-500 mb-3"></div>
+        <p class="text-sm text-gray-500">Loading messages...</p>
+      </div>
+    </div>
+  `;
+  clearSessionBtn.classList.remove('hidden');
+  
+  try {
+    const r = await apiRequest(`/api/chat/history/${sessionId}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'}
+    });
+    const j = await r.json();
+    
+    chatBox.innerHTML = '';
+    
+    if (r.ok && j.data && j.data.length > 0) {
+      j.data.forEach(msg => {
+        appendMessage('user', msg.user_message, false);
+        appendMessage('assistant', msg.ai_response, false);
+      });
+    } else {
+      chatBox.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full opacity-50">
+          <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+          </div>
+          <p class="text-gray-600 font-medium">No messages yet</p>
+          <p class="text-sm text-gray-400 mt-1">Start the conversation below</p>
+        </div>
+      `;
+    }
+    
+    loadSessions();
+  } catch (err) {
+    console.error('Error loading messages:', err);
+    chatBox.innerHTML = `
+      <div class="flex items-center justify-center h-full">
+        <div class="text-center text-red-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="font-medium">Failed to load messages</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+async function deleteSession(event, sessionId) {
+  event.stopPropagation();
+  
+  if (!confirm('Delete this conversation? This action cannot be undone.')) {
+    return;
+  }
+  
+  try {
+    const r = await apiRequest('/api/chat/history/delete', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ session_id: sessionId })
+    });
+    
+    if (r.ok) {
+      if (currentSessionId === sessionId) {
+        currentSessionId = null;
+        chatBox.innerHTML = `
+          <div class="flex flex-col items-center justify-center h-full opacity-50">
+            <div class="w-20 h-20 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </div>
+            <p class="text-gray-600 font-medium">Start a new conversation</p>
+          </div>
+        `;
+        clearSessionBtn.classList.add('hidden');
+      }
+      
+      loadSessions();
+      toast('Session deleted successfully');
+    } else {
+      toast('Failed to delete session');
+    }
+  } catch (err) {
+    console.error('Error deleting session:', err);
+    toast('Error deleting session');
+  }
+}
+
+async function clearCurrentSession() {
+  if (!currentSessionId) return;
+  
+  if (!confirm('Clear all messages in this session?')) {
+    return;
+  }
+  
+  await deleteSession(new Event('click'), currentSessionId);
+}
+
+function appendMessage(role, text, scroll = true) {
+  const wrap = document.createElement('div');
+  const isUser = role === 'user';
+  wrap.className = `flex ${isUser ? 'justify-end' : 'justify-start'} animate-fade-in`;
+  wrap.innerHTML = `
+    <div class="max-w-[75%] rounded-2xl p-4 shadow-md ${
+      isUser 
+        ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-br-md' 
+        : 'bg-white border border-gray-200 text-gray-800 rounded-bl-md'
+    }">
+      <div class="text-sm leading-relaxed whitespace-pre-wrap">${text.replace(/</g,'&lt;')}</div>
+      ${!isUser ? '<div class="mt-2 pt-2 border-t border-gray-100 flex items-center gap-2"><span class="text-xs text-gray-400">AI Assistant</span></div>' : ''}
+    </div>
+  `;
+  chatBox.appendChild(wrap);
+  if (scroll) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+}
+
+function fillAndAsk(text) {
+  qEl.value = text;
+  askForm.dispatchEvent(new Event('submit'));
+}
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = now - date;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  
+  if (days === 0) return 'Today';
+  if (days === 1) return 'Yesterday';
+  if (days < 7) return `${days}d ago`;
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+askForm.onsubmit = async (e) => {
+  e.preventDefault();
+  const question = qEl.value.trim();
+  if (!question) return;
+  
+  if (chatBox.querySelector('.opacity-50')) {
+    chatBox.innerHTML = '';
+  }
+  
+  appendMessage('user', question);
+  qEl.value = '';
+
+  const typing = document.createElement('div');
+  typing.className = 'flex justify-start animate-fade-in';
+  typing.innerHTML = `
+    <div class="bg-white border border-gray-200 rounded-2xl rounded-bl-md p-4 shadow-md">
+      <div class="flex items-center gap-2">
+        <div class="flex gap-1">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+        </div>
+        <span class="text-sm text-gray-500">AI is thinking...</span>
+      </div>
+    </div>
+  `;
+  chatBox.appendChild(typing);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  const payload = { message: question };
+  if (currentSessionId) {
+    payload.session_id = currentSessionId;
+  }
+
+  const r = await apiRequest('/api/chat/message', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  const j = await r.json();
+  typing.remove();
+
+  if (r.ok) {
+    appendMessage('assistant', j.response || '[No response]');
+    
+    if (!currentSessionId && j.session_id) {
+      currentSessionId = j.session_id;
+      loadSessions();
+      clearSessionBtn.classList.remove('hidden');
+    }
+  } else {
+    appendMessage('assistant', j.detail || 'Something went wrong.');
+  }
+};
+
+clearSessionBtn.addEventListener('click', clearCurrentSession);
+
+loadSessions();
+
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+`;
+document.head.appendChild(style);
+</script>
+{% endblock %}
