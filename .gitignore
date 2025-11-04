@@ -5,7 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
-
+logs
+hrm_agent.log
 # Virtual environments
 .venv
 .env
