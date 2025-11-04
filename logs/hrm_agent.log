@@ -270,3 +270,14 @@ INFO: 2025-11-02 23:55:06 - hrm_agent - Payload
 INFO: 2025-11-02 23:55:06 - hrm_agent - User 
 INFO: 2025-11-02 23:55:06 - hrm_agent - Payload 
 INFO: 2025-11-02 23:55:06 - hrm_agent - User 
+ERROR: 2025-11-04 22:00:57 - hrm_agent - Error getting current user: Signature has expired
+INFO: 2025-11-04 22:01:19 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+INFO: 2025-11-04 22:03:04 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+INFO: 2025-11-04 22:03:17 - hrm_agent - OTP request for login: mayuradlak212@gmail.com
+INFO: 2025-11-04 22:03:28 - hrm_agent - OTP verified successfully for: mayuradlak212@gmail.com
+INFO: 2025-11-04 22:03:34 - hrm_agent - Payload 
+INFO: 2025-11-04 22:03:34 - hrm_agent - User 
+INFO: 2025-11-04 22:03:35 - hrm_agent - Payload 
+INFO: 2025-11-04 22:03:35 - hrm_agent - User 
+INFO: 2025-11-04 22:03:35 - hrm_agent - Payload 
+INFO: 2025-11-04 22:03:35 - hrm_agent - User 
