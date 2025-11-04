@@ -1,6 +1,7 @@
 # HRM Agent 2.0
 An intelligent AI-powered Human Resource Management assistant that provides personalized responses to employee queries. Built with FastAPI and Mistral AI, the system retrieves real-time data from the database based on the logged-in user's credentials and generates contextual, personalized answers. All HR features are accessible through a conversational interface, putting comprehensive HR support right at employees' fingertips.
 
+First, an employee logs in. After logging in, they can access a chat interface that displays the full history of their conversations, similar to ChatGPT. When the user asks a query, it is sent to the API, which processes the request and determines the correct database collection to retrieve relevant data. The system fetches the data from the collection, and this data, along with the user’s query, is processed by Mistral AI. The AI then generates a personalized response based on the logged-in user’s context, which is sent back to the user as an answer.
 ## 🌟 Key Features
 
 - **🤖 AI Chat Agent**: Graph-based conversational AI using LangGraph and Mistral AI
@@ -76,6 +77,57 @@ hrm-agent-2-0/
 └── logs/                      # Application logs
     └── hrm_agent.log          # Main log file
 ```
+
+### Workflow
+┌────────────────────────────┐
+│        Employee User        │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│        Login System         │
+│ (Auth via user credentials) │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│     Chat Interface (UI)     │
+│ - Shows chat history        │
+│ - Accepts new queries       │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│       FastAPI Backend       │
+│ - Receives user query       │
+│ - Identifies logged-in user │
+│ - Sends query for processing│
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────────────────────┐
+│          Processing & Intelligence Layer    │
+│--------------------------------------------│
+│ 1. Determine correct database collection    │
+│ 2. Retrieve relevant HR data (MongoDB)      │
+│ 3. Combine user query + HR data             │
+│ 4. Send contextual prompt to Mistral AI     │
+│ 5. Receive personalized AI-generated answer │
+└────────────────────────────────────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│     Response Generation     │
+│ - Formats personalized reply│
+│ - Stores conversation in DB │
+└────────────┬───────────────┘
+             │
+             ▼
+┌────────────────────────────┐
+│    Chat Interface (UI)      │
+│  - Displays AI’s response   │
+│  - Updates chat history     │
+└────────────────────────────┘
 
 ## 🚀 Quick Start
 
@@ -208,5 +260,6 @@ The server will start on `http://127.0.0.1:8000`
 | GET | `/login` | Login/signup page |
 | GET | `/chat` | Chat interface |
 | GET | `/health` | Health check |
+
 
 
