@@ -1,6 +1,5 @@
 # HRM Agent 2.0
-
-An AI-powered Human Resource Management system built with FastAPI, featuring intelligent chat capabilities using Mistral AI, vector database integration with Pinecone, and secure OTP authentication.
+An intelligent AI-powered Human Resource Management assistant that provides personalized responses to employee queries. Built with FastAPI and Mistral AI, the system retrieves real-time data from the database based on the logged-in user's credentials and generates contextual, personalized answers. All HR features are accessible through a conversational interface, putting comprehensive HR support right at employees' fingertips.
 
 ## 🌟 Key Features
 
@@ -209,4 +208,5 @@ The server will start on `http://127.0.0.1:8000`
 | GET | `/login` | Login/signup page |
 | GET | `/chat` | Chat interface |
 | GET | `/health` | Health check |
+
 
