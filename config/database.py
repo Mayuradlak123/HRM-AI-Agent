@@ -48,7 +48,7 @@ def connect_to_mongo():
     """
     try:
         logger.info("Attempting to connect to MongoDB...")
-        mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING", "mongodb+srv://omadlak420:EP65sCMIX7nd9zHV@cluster0.qdyo0.mongodb.net/HRM_AGENT?retryWrites=true&w=majority")
+        mongo_connection_string = os.getenv("MONGO_CONNECTION_STRING")
         
         if not mongo_connection_string:
             logger.error("MONGO_CONNECTION_STRING not set in environment variables")
